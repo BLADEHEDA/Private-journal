@@ -9,24 +9,39 @@ function App() {
         firstname: '',
         lastname: '',
         email: '',
-        profession: professions[0],
+       password: '',
         age: '',
+        phonenumber: '',
+        city: '',
+        invitecode:''
       },
       validationSchema: Yup.object({
-        name: Yup.string()
-                .label('Full Name')
+        firstname: Yup.string()
+                .label('First name')
                 .required(),
+        lastname: Yup.string()
+                .label('Last name')
+                .required(),               
         email: Yup.string()
                 .email()
                 .required(),
-        profession: Yup.string()
-                    .oneOf(professions, 'The profession you chose does not exist'),
+        password: Yup.string()
+        .label('password')
+        .required(),
+        phonenumber:Yup.number()
+        .label('phone number')
+        .required(),
+        city:Yup.string()    
+        .label('city')
+        .required(),
         age: Yup.number()
               .min(15, 'You need to be older than 15 to register')
               .required()
       }),
       onSubmit: function (values) {
-        alert(`You are registered! Name: ${values.name}. 
+        alert(`You are registered! 
+        firstnaame: ${values.firstname}. 
+        lastnaame: ${values.lastname}.
         Email: ${values.email}.
          Profession: ${values.profession}. 
           Age: ${values.age}`);
@@ -67,14 +82,34 @@ function App() {
           </div>
 
           <div className='mb-4'>
-            <label for="age">Age</label>
-            <input type="number" name="age" id="age"
-              className={`block w-full rounded border py-1 px-2 ${formik.touched.age && formik.errors.age ? 'border-red-400' : 'border-gray-300'}`}
-              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.age} />
-            {formik.touched.age && formik.errors.age && (
-              <span className='text-red-400'>{formik.errors.age}</span>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.password && formik.errors.password ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} />
+            {formik.touched.password && formik.errors.password && (
+              <span className='text-red-400'>{formik.errors.password}</span>
             )}
           </div>
+          <div className='mb-4'>
+            <label for="email">phone number</label>
+            <input type="tel" name="email" id="email"
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.phonenumber && formik.errors.phonenumber ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phonenumber} />
+            {formik.touched.phonenumber && formik.errors.phonenumber && (
+              <span className='text-red-400'>{formik.errors.phonenumber}</span>
+            )}
+          </div>
+          <div className='mb-4'>
+            <label for="email">city you'll drive in </label>
+            <input type="text" name="city" id="city"
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.city && formik.errors.city ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.city} />
+            {formik.touched.city && formik.errors.city && (
+              <span className='text-red-400'>{formik.errors.city}</span>
+            )}
+          </div>
+          
+
           <div className='text-center'>
             <button className='bg-blue-500 rounded p-3 text-white' type='submit'>Submit</button>
           </div>
