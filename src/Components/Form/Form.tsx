@@ -2,7 +2,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 function App() {
-    const professions = ['Developer', 'Designer', 'Other'];
     //TODO create formik instance
     const formik = useFormik({
       initialValues: {
@@ -17,34 +16,58 @@ function App() {
       },
       validationSchema: Yup.object({
         firstname: Yup.string()
-                .label('First name')
-                .required(),
-        lastname: Yup.string()
-                .label('Last name')
-                .required(),               
+        .min(2, "Too Short!")
+        .max(50, "Too Long!")
+        .required("Firstname is required"),
+    
+      lastname: Yup.string()
+        .min(2, "Too Short!")
+        .max(50, "Too Long!")
+        .required("Lastname is required"),              
         email: Yup.string()
                 .email()
                 .required(),
-        password: Yup.string()
-        .label('password')
-        .required(),
-        phonenumber:Yup.number()
-        .label('phone number')
-        .required(),
+
+         password: Yup.string()
+         .required("Password is required")
+          .min(6, "Password is too short - should be 6 chars minimum"),
+
+        phonenumber: Yup.string()
+        .required("Phone number is required")
+        .matches(
+    /^([0]{1}|\+?[234]{3})([7-9]{1})([0|1]{1})([\d]{1})([\d]{7})$/g,
+          "Invalid phone number"
+        ),
         city:Yup.string()    
         .label('city')
         .required(),
-        age: Yup.number()
-              .min(15, 'You need to be older than 15 to register')
-              .required()
+        invitecode:Yup.string()    
+        .label('invite code')
+        .optional()
+
       }),
       onSubmit: function (values) {
+        alert(values.firstname);
         alert(`You are registered! 
         firstnaame: ${values.firstname}. 
         lastnaame: ${values.lastname}.
         Email: ${values.email}.
-         Profession: ${values.profession}. 
-          Age: ${values.age}`);
+        password: ${values.password}.
+        phonenumber: ${values.phonenumber}.
+        city: ${values.city}.
+        invitecode: ${values.invitecode}
+         `);
+        //  display on the console
+         console.log(`You are registered! 
+         firstnaame: ${values.firstname}. 
+         lastnaame: ${values.lastname}.
+         Email: ${values.email}.
+         password: ${values.password}.
+         phonenumber: ${values.phonenumber}.
+         city: ${values.city}.
+         invitecode: ${values.invitecode}
+          `);
+         
       }
     })
     
@@ -92,7 +115,7 @@ function App() {
           </div>
           <div className='mb-4'>
             <label for="email">phone number</label>
-            <input type="tel" name="email" id="email"
+            <input type="tel" name="phonenumber" id="phonenumber"
               className={`block w-full rounded border py-1 px-2 ${formik.touched.phonenumber && formik.errors.phonenumber ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phonenumber} />
             {formik.touched.phonenumber && formik.errors.phonenumber && (
@@ -100,7 +123,7 @@ function App() {
             )}
           </div>
           <div className='mb-4'>
-            <label for="email">city you'll drive in </label>
+            <label for="text">city you'll drive in </label>
             <input type="text" name="city" id="city"
               className={`block w-full rounded border py-1 px-2 ${formik.touched.city && formik.errors.city ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.city} />
@@ -108,15 +131,21 @@ function App() {
               <span className='text-red-400'>{formik.errors.city}</span>
             )}
           </div>
-          
+          <div className='mb-4'>
+            <label for="text">invite code </label>
+            <input type="text" name="invitecode" id="city"
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.invitecode && formik.errors.invitecode ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.invitecode} />
+            {formik.touched.invitecode && formik.errors.invitecode && (
+              <span className='text-red-400'>{formik.errors.invitecode}</span>
+            )}
+          </div>
+
 
           <div className='text-center'>
             <button className='bg-blue-500 rounded p-3 text-white' type='submit'>Submit</button>
           </div>
         </form>
-        {/* <section className="form-names">
-        {values.name}
-        </section> */}
       </main>
     );
 }
