@@ -34,10 +34,7 @@ function App() {
 
         phonenumber: Yup.string()
         .required("Phone number is required")
-        .matches(
-    /^([0]{1}|\+?[234]{3})([7-9]{1})([0|1]{1})([\d]{1})([\d]{7})$/g,
-          "Invalid phone number"
-        ),
+        .label('phone number'),
         city:Yup.string()    
         .label('city')
         .required(),
@@ -48,6 +45,8 @@ function App() {
       }),
       onSubmit: function (values) {
         alert(values.firstname);
+        console.log(values.firstname);
+        
         alert(`You are registered! 
         firstnaame: ${values.firstname}. 
         lastnaame: ${values.lastname}.
@@ -146,6 +145,10 @@ function App() {
             <button className='bg-blue-500 rounded p-3 text-white' type='submit'>Submit</button>
           </div>
         </form>
+        {/* Trying to display the form values as jsx */}
+       {/* <div className="lol">
+        {values.firstname}
+        </div>  */}
       </main>
     );
 }
