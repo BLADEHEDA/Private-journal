@@ -1,13 +1,36 @@
 *{
-  max-width:100%;
-  max-height:100%;
+  /* max-width:100%;
+  max-height:100%; */
+  width: 100%;
+  /* height: 100%; */
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   /* overflow: hidden; */     
 }
 @media only screen and (min-width:1px){
-  .form-input{
-    border:solid 1px black ;
+  .form-input,.main-section{
+    /* border:solid 1px black ; */
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+
   }
+  .form-top {
+    /* border:solid 1px black ; */
+    /* justify-content:space-between; */
+  }
+  .form-input{
+    background: rgb(228, 226, 226);
+  }
+  }
+  @media only screen and (min-width:768px){
+    .form-input,.main-section{
+      /* border:solid 1px black ; */
+      display: flex;
+      width: 30%;
+      margin: 0 auto;
+  
+  
+    }
 }
