@@ -1,150 +1,89 @@
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
-import React from 'react';
-import { Formik } from 'formik';
-// bekoiw are thge template settings for the formik library 
-const Basic = () => (
-  <div>
-    {/* <h1>Anywhere in your app!</h1> */}
-    <Formik
-      initialValues={{ email: '', password: '',firstname: '',lastname: '',
-      phonenumber: '',city: '' }}
-      validate={values => {
-        const errors = {};
-        // check the validity of the email
-        if (!values.email) {
-          errors.email = 'Required';
-        } 
-        else 
-        if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        // check the validity of the password
-        const passw=  /^[A-Za-z]\w{7,14}$/; ;
-      if(!values.password){
-          errors.password='Required'
-        }
-        else if(inputtxt.value.match(passw)){
-          errors.password= 'enter the right password'
-      
-        }
-        // check the validity of the names
-        if(!values.firstname){
-          errors.firstname='Required'
-        }
-        if(!values.Lastname){
-          errors.Lastname='Required'
-        }
-
-
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-        /* and other goodies */
+function App() {
+    const professions = ['Developer', 'Designer', 'Other'];
+    //TODO create formik instance
+    const formik = useFormik({
+      initialValues: {
+        firstname: '',
+        lastname: '',
+        email: '',
+        profession: professions[0],
+        age: '',
+      },
+      validationSchema: Yup.object({
+        name: Yup.string()
+                .label('Full Name')
+                .required(),
+        email: Yup.string()
+                .email()
+                .required(),
+        profession: Yup.string()
+                    .oneOf(professions, 'The profession you chose does not exist'),
+        age: Yup.number()
+              .min(15, 'You need to be older than 15 to register')
+              .required()
+      }),
+      onSubmit: function (values) {
+        alert(`You are registered! Name: ${values.name}. 
+        Email: ${values.email}.
+         Profession: ${values.profession}. 
+          Age: ${values.age}`);
+      }
+    })
     
-        //  <input type="text" className="form-input" />
-      
-      }) => (
-        <form onSubmit={handleSubmit}>
-           <article className="form divx">
-            <label htmlFor="first name" className="form-label">First name</label>
-            <div className="form-div">
-            <input
-            className='form-input'
-              type="text"
-              name="firstanme"
-              placeholder='password'
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.firstname}
-            />
-               </div>
-            </article>
-          {errors.firstname && touched.firstname && errors.firstname}
-           <article className="form divx">
-             <label htmlFor="Last name" className="form-label">Last name</label>
-             <div className="form-div">
-              <input 
-              className="form-input"
-              type="text" 
-              name='lastname'
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastname}
-              />
-             </div>
-           </article>
-           {errors.lastname && touched.lastname && errors.lastname}
-
-         <article className="formdivx">
-           <label htmlFor="Email" className="form-label">Email</label>
-        <div className="form-div">
-          <input
-            className='form-input'
-            type="email"
-            name="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-          />
+    return (
+      <main className="main-section">
+        <form onSubmit={formik.handleSubmit} className="max-w-lg mx-auto bg-white rounded shadow-lg mt-7 p-3">
+        {/* <h1 className='text-3xl mb-3 text-center'>Register</h1> */}
+          <div className='mb-4'>
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" id="firstname" 
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.firstname && formik.errors.firstname ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.firstname} />
+            {formik.touched.firstname && formik.errors.firstname && (
+              <span className='text-red-400'>{formik.errors.firstname}</span>
+            )}
           </div>
-            </article>
-          {errors.email && touched.email && errors.email}
- 
-          <article className="form divx">
-            <label htmlFor="" className="form-label">Password</label>
-            <div className="form-div">
-            <input
-            className='form-input'
-              type="password"
-              name="password"
-              placeholder='password'
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-               </div>
-            </article>
-          {errors.password && touched.password && errors.password}
+          <div className='mb-4'>
+            <label for="lastname">Last Name</label>
+            <input type="text" name="lastname" id="lastname" 
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.lastname && formik.errors.lastname ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.lastname} />
+            {formik.touched.lastname && formik.errors.lastname && (
+              <span className='text-red-400'>{formik.errors.lastname}</span>
+            )}
+          </div>
 
-          <article className="form divx">
-            <label htmlFor="" className="form-label">Phone numbefr</label>
-            <div className="form-div">
-            <input
-            className='form-input'
-              type="text"
-              name="phonenumber"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.phonenumber}
-            />
-               </div>
-            </article>
-          {errors.phonenumber && touched.phonenumber && errors.phonenumber}
+          <div className='mb-4'>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email"
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.email && formik.errors.email ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
+            {formik.touched.email && formik.errors.email && (
+              <span className='text-red-400'>{formik.errors.email}</span>
+            )}
+          </div>
 
-
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          <div className='mb-4'>
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age"
+              className={`block w-full rounded border py-1 px-2 ${formik.touched.age && formik.errors.age ? 'border-red-400' : 'border-gray-300'}`}
+              onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.age} />
+            {formik.touched.age && formik.errors.age && (
+              <span className='text-red-400'>{formik.errors.age}</span>
+            )}
+          </div>
+          <div className='text-center'>
+            <button className='bg-blue-500 rounded p-3 text-white' type='submit'>Submit</button>
+          </div>
         </form>
-      )}
-    </Formik>
-  </div>
-);
+        {/* <section className="form-names">
+        {values.name}
+        </section> */}
+      </main>
+    );
+}
 
-export default Basic;
+export default App;
