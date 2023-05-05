@@ -10,7 +10,7 @@ const [showModal , setShowModal]= useState(false)
 
 const showmodal=()=>{
   alert("hello");
-  // setShowModal(true)
+  setShowModal(true)
   setShowModal(!showModal);
 }
     //TODO create formik instance
@@ -55,6 +55,7 @@ const showmodal=()=>{
 
       }),
       onSubmit: function (values) { 
+        setShowModal(true)
         alert(`You are registered! 
         firstnaame: ${values.firstname}. 
         lastnaame: ${values.lastname}.
@@ -63,18 +64,7 @@ const showmodal=()=>{
         phonenumber: ${values.phonenumber}.
         city: ${values.city}.
         invitecode: ${values.invitecode}
-         `);
-        //  display on the console
-         console.log(`You are registered! 
-         firstnaame: ${values.firstname}. 
-         lastnaame: ${values.lastname}.
-         Email: ${values.email}.
-         password: ${values.password}.
-         phonenumber: ${values.phonenumber}.
-         city: ${values.city}.
-         invitecode: ${values.invitecode}
-          `);
-         
+         `);         
       }
     })
     
@@ -176,7 +166,7 @@ const showmodal=()=>{
   
             <div className='text-center'>
             <button 
-            onClick={showmodal}
+      // onClick={showmodal}
             className='bg-[black] rounded p-3 text-white' type='submit'>Submit</button>
           </div>
             <p className="form-text mb-[1em] ">Already have an Account ? <a href="/">
@@ -185,13 +175,8 @@ const showmodal=()=>{
         </section>
 
           {/* subjected to hcnges is the conditional rendering  */}
-          {/* {showModal?(<Modal />):null }  */}
-          {showModal? (<Modal/>):null }
-        {/* Trying to display the form values as jsx */}
-       {/* <div className="lol">
-        {formik.values.firstname}
-        </div>  */}
-        {/* </form> */}
+         
+          {showModal? (<Modal showModal={showModal} setShowModal={setShowModal} />):null }
       </main>
     );
 }
