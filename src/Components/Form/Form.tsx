@@ -1,16 +1,18 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
-
-// build the props for the component 
-const modal=()=>{
-  return(
-    <main>
-
-    </main>
-  )
-}
+import Modal from './Modal';
 
 function App() {
+// the forllowing code is to hide and show the modal component 
+// const [showModal, setShowModal] = React.useState(false);
+const [showModal , setShowModal]= useState(false)
+
+const showmodal=()=>{
+  alert("hello");
+  // setShowModal(true)
+  setShowModal(!showModal);
+}
     //TODO create formik instance
     const formik = useFormik({
       initialValues: {
@@ -52,10 +54,7 @@ function App() {
         .optional()
 
       }),
-      onSubmit: function (values) {
-        alert(values.firstname);
-        console.log(values.firstname);
-        
+      onSubmit: function (values) { 
         alert(`You are registered! 
         firstnaame: ${values.firstname}. 
         lastnaame: ${values.lastname}.
@@ -80,18 +79,21 @@ function App() {
     })
     
     return (
-      <main className="main-section ">
-        {/* <section className="main-section-left">
-          <h1>Opportunity is EveryWhere</h1>
-        </section> */}
+      <main className="main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[30%] ">
+        <section className="main-section-left px-2">
+          <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
+          <p>make the most of your time on the road oon the platform with the largest 
+            netwok of active riders</p>
+        </section>
 
-    <section className="main-section-right mt-[0.5em] shadow-lg ">
+    <section className="main-section-right mt-[0.5em]  ">
     <div className="form-top flex px-2 ">
             <h3 className="form-top-head font-[500] mx-1 text-[20px]  ">Become a driver</h3>
             <h3 className="form-top-head mt-[5px] ml-[12px] ">Sign up to ride</h3>
      </div>
      <div className='flex px-3 mt-3  ' >
-        <input type="radio" className='w-[18px] bg-[black] mr-2 ' name='car'/> I have a Car
+        <input type="radio" className='w-[18px] bg-[black]
+        bg-black mr-2 ' name='car'/> I have a Car
         <input type="radio" className='w-[18px] bg-[black] ml-7 mr-2'  name='car'  /> I need a Car
       </div>
         <form onSubmit={formik.handleSubmit} className=" mx-auto w-full bg-white rounded  mt-3 p-3">
@@ -173,15 +175,18 @@ function App() {
             including for marketing purposes  </p>
   
             <div className='text-center'>
-            <button className='bg-[black] rounded p-3 text-white' type='submit'>Submit</button>
+            <button 
+            onClick={showmodal}
+            className='bg-[black] rounded p-3 text-white' type='submit'>Submit</button>
           </div>
-            <p className="form-text">Already have an Account ? <a href="/">
+            <p className="form-text mb-[1em] ">Already have an Account ? <a href="/">
                Sign In</a>  </p>
         </form>
         </section>
 
-
-
+          {/* subjected to hcnges is the conditional rendering  */}
+          {/* {showModal?(<Modal />):null }  */}
+          {showModal? (<Modal/>):null }
         {/* Trying to display the form values as jsx */}
        {/* <div className="lol">
         {formik.values.firstname}
