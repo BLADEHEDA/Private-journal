@@ -8,11 +8,11 @@ function App() {
 // const [showModal, setShowModal] = React.useState(false);
 const [showModal , setShowModal]= useState(false)
 
-const showmodal=()=>{
-  alert("hello");
-  setShowModal(true)
-  setShowModal(!showModal);
-}
+// const showmodal=()=>{
+//   alert("hello");
+//   setShowModal(true)
+//   setShowModal(!showModal);
+// }
     //TODO create formik instance
     const formik = useFormik({
       initialValues: {
@@ -69,14 +69,15 @@ const showmodal=()=>{
     })
     
     return (
-      <main className="main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[30%] ">
+      <main className="main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
+      md:flex ">
         <section className="main-section-left px-2">
           <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
           <p>make the most of your time on the road oon the platform with the largest 
             netwok of active riders</p>
         </section>
 
-    <section className="main-section-right mt-[0.5em]  ">
+    <section className="main-section-right mt-[0.5em] ]  ">
     <div className="form-top flex px-2 ">
             <h3 className="form-top-head font-[500] mx-1 text-[20px]  ">Become a driver</h3>
             <h3 className="form-top-head mt-[5px] ml-[12px] ">Sign up to ride</h3>
@@ -89,7 +90,7 @@ const showmodal=()=>{
         <form onSubmit={formik.handleSubmit} className=" mx-auto w-full bg-white rounded  mt-3 p-3">
         {/* <h1 className='text-3xl mb-3 text-center'>Register</h1> */}
           <div className='mb-3'>
-            <label for="firstname">First Name</label>
+            <label >First Name</label>
             <input type="text" name="firstname" id="firstname" 
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.firstname && formik.errors.firstname ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.firstname} />
@@ -98,7 +99,7 @@ const showmodal=()=>{
             )}
           </div>
           <div className='mb-3'>
-            <label for="lastname">Last Name</label>
+            <label >Last Name</label>
             <input type="text" name="lastname" id="lastname" 
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.lastname && formik.errors.lastname ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.lastname} />
@@ -108,7 +109,7 @@ const showmodal=()=>{
           </div>
 
           <div className='mb-3'>
-            <label for="email">Email</label>
+            <label >Email</label>
             <input type="email" name="email" id="email"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.email && formik.errors.email ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
@@ -118,7 +119,7 @@ const showmodal=()=>{
           </div>
 
           <div className='mb-3'>
-            <label for="password">Password</label>
+            <label >Password</label>
             <input type="password" name="password" id="password"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.password && formik.errors.password ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} />
@@ -127,7 +128,7 @@ const showmodal=()=>{
             )}
           </div>
           <div className='mb-3'>
-            <label for="email">phone number</label>
+            <label >phone number</label>
             <input type="tel" name="phonenumber" id="phonenumber"
               className={`block form-input w-full rounded border py-1  ${formik.touched.phonenumber && formik.errors.phonenumber ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phonenumber} />
@@ -136,7 +137,7 @@ const showmodal=()=>{
             )}
           </div>
           <div className='mb-3'>
-            <label for="text">city you'll drive in </label>
+            <label >city you'll drive in </label>
             <input type="text" name="city" id="city"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.city && formik.errors.city ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.city} />
@@ -145,7 +146,7 @@ const showmodal=()=>{
             )}
           </div>
           <div className='mb-3'>
-            <label for="text">invite code </label>
+            <label >invite code </label>
             <input type="text" name="invitecode" id="city"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.invitecode && formik.errors.invitecode ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.invitecode} />
