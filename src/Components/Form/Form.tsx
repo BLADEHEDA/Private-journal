@@ -9,9 +9,10 @@ function App() {
 const [showModal , setShowModal]= useState(false)
 
 // const showmodal=()=>{
-//   alert("hello");
-//   setShowModal(true)
-//   setShowModal(!showModal);
+  alert("hello");
+  // if (window.confirm('Reset?')) {
+  //   formik.resetForm();
+  // }
 // }
     //TODO create formik instance
     const formik = useFormik({
@@ -56,6 +57,7 @@ const [showModal , setShowModal]= useState(false)
       }),
       onSubmit: function (values) { 
         setShowModal(true)
+        formik.resetForm();
         alert(`You are registered! 
         firstnaame: ${values.firstname}. 
         lastnaame: ${values.lastname}.
