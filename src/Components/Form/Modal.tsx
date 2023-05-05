@@ -1,6 +1,6 @@
 // import React from "react";
 
-export default function Modal( {showModal, setShowModal} ) {
+export default function Modal({ setShowModal}:any ) {
   return (
     <>
 
