@@ -106,7 +106,7 @@ const showmodal=()=>{
 <div className='flex  mt-3  ' >
         <input 
         type="radio"
-         className='w-[50px] mr-2 bg-[black] bg-black  cursor-pointer '  
+         className='w-[50px] mr-2 bg-[black] bg-black bg-[blue] cursor-pointer '  
          id="haveCar" 
          name='car'
          value="Has Car" 
@@ -119,7 +119,7 @@ const showmodal=()=>{
    
         <input 
         type="radio" 
-        className=' w-[50px] mr-2 bg-[black]  cursor-pointer' 
+        className=' w-[50px] mr-2 bg-[black] bg-white cursor-pointer' 
         id="needCar"
         name='car' 
         value="Needs Car"
