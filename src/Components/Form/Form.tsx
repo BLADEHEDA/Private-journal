@@ -3,17 +3,11 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import Modal from './Modal';
 
-function App() {
+function App(props) {
 // the forllowing code is to hide and show the modal component 
 // const [showModal, setShowModal] = React.useState(false);
 const [showModal , setShowModal]= useState(false)
 
-// const showmodal=()=>{
-  // alert("hello");
-  // if (window.confirm('Reset?')) {
-  //   formik.resetForm();
-  // }
-// }
     //TODO create formik instance
     const formik = useFormik({
       initialValues: {
@@ -56,19 +50,23 @@ const [showModal , setShowModal]= useState(false)
 
       }),
       onSubmit: function (values) { 
-        setShowModal(true)
-        formik.resetForm();
-        alert(`You are registered! 
-        firstnaame: ${values.firstname}. 
-        lastnaame: ${values.lastname}.
-        Email: ${values.email}.
-        password: ${values.password}.
-        phonenumber: ${values.phonenumber}.
-        city: ${values.city}.
-        invitecode: ${values.invitecode}
-         `);         
+        setShowModal(true)        
       }
     })
+// /display the modal values on
+const showmodal=()=>{
+  alert(`Hello bro whats up  
+  firstnaame: ${formik.values.firstname}. 
+  lastnaame: ${formik.values.lastname}.
+  Email: ${formik.values.email}.
+  password: ${formik.values.password}.
+  phonenumber: ${formik.values.phonenumber}.
+  city: ${formik.values.city}.
+  invitecode: ${formik.values.invitecode}
+   `);  
+  formik.resetForm();
+}
+  
     
     return (
       <main className="main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
@@ -90,7 +88,7 @@ const [showModal , setShowModal]= useState(false)
         <input type="radio" className='w-[18px] bg-[black] ml-7 mr-2'  name='car'  /> I need a Car
       </div>
         <form onSubmit={formik.handleSubmit} className=" mx-auto w-full bg-white rounded  mt-3 p-3">
-        {/* <h1 className='text-3xl mb-3 text-center'>Register</h1> */}
+
           <div className='mb-3'>
             <label >First Name</label>
             <input type="text" name="firstname" id="firstname" 
@@ -169,7 +167,6 @@ const [showModal , setShowModal]= useState(false)
   
             <div className='text-center'>
             <button 
-      // onClick={showmodal}
             className='bg-[black] rounded p-3 text-white' type='submit'>Submit</button>
           </div>
             <p className="form-text mb-[1em] ">Already have an Account ? <a href="/">
@@ -177,9 +174,8 @@ const [showModal , setShowModal]= useState(false)
         </form>
         </section>
 
-          {/* subjected to hcnges is the conditional rendering  */}
-         
-          {showModal? (<Modal showModal={showModal} setShowModal={setShowModal} />):null }
+              {showModal? (<Modal showModal={showModal} setShowModal={setShowModal}
+          showmodal={showmodal}  />):null }
       </main>
     );
 }
