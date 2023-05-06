@@ -8,6 +8,7 @@
   margin: 0;
   overflow-x: hidden;  
   color:black; 
+  background: white;
 
 }
 label{
@@ -21,7 +22,7 @@ img{
 @media only screen and (min-width:1px){
   .form-input{
     background: rgb(228, 226, 226);
-    color:black; */
+    color:black; 
   }
   }
   @media only screen and (min-width:768px){
