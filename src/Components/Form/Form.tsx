@@ -11,6 +11,7 @@ const [showModal , setShowModal]= useState(false)
     //TODO create formik instance
     const formik = useFormik({
       initialValues: {
+        car: '',
         firstname: '',
         lastname: '',
         email: '',
@@ -44,6 +45,9 @@ const [showModal , setShowModal]= useState(false)
         city:Yup.string()    
         .label('city')
         .required(),
+        car:Yup.string()    
+        .label('car')
+        .required(),
         invitecode:Yup.string()    
         .label('invite code')
         .optional()
@@ -55,7 +59,8 @@ const [showModal , setShowModal]= useState(false)
     })
 // /display the modal values on
 const showmodal=()=>{
-  alert(`Hello bro whats up  
+  alert(`Hello bro whats up 
+  car: ${formik.values.car}. 
   firstnaame: ${formik.values.firstname}. 
   lastnaame: ${formik.values.lastname}.
   Email: ${formik.values.email}.
@@ -64,7 +69,7 @@ const showmodal=()=>{
   city: ${formik.values.city}.
   invitecode: ${formik.values.invitecode}
    `);  
-  formik.resetForm();
+  // formik.resetForm();
 }
   
     
@@ -82,16 +87,52 @@ const showmodal=()=>{
             <h3 className="form-top-head font-[500] mx-1 text-[20px]  ">Become a driver</h3>
             <h3 className="form-top-head mt-[5px] ml-[12px] ">Sign up to ride</h3>
      </div>
-     <div className='flex px-3 mt-3  ' >
-        <input type="radio" className='w-[18px] bg-[black]
-        bg-black mr-2 ' name='car'/> I have a Car
-        <input type="radio" className='w-[18px] bg-[black] ml-7 mr-2'  name='car'  /> I need a Car
-      </div>
-        <form onSubmit={formik.handleSubmit} className=" mx-auto w-full bg-white rounded  mt-3 p-3">
 
+        <form 
+        onSubmit={formik.handleSubmit} 
+        className=" mx-auto w-full bg-white rounded  mt-3 p-3">
+{/* Validate radio buttons   */}
+<section className="radio-btns mb-5">
+
+
+<div className='flex  mt-3  ' >
+        <input 
+        type="radio"
+         className='w-[70px] bg-[black] bg-black  cursor-pointer '  
+         id="haveCar" 
+         name='car'
+         value="Has Car" 
+         onChange={formik.handleChange}
+         checked={formik.values.car === "Has Car"}
+         />
+      <label htmlFor="haveCar" className=" cursor-pointer">
+        I have a car
+      </label>
+   
+        <input 
+        type="radio" 
+        className='w-[70px] bg-[black]  cursor-pointer' 
+        id="needCar"
+        name='car' 
+        value="Needs Car"
+        onChange={formik.handleChange}
+        checked={formik.values.car === "Needs Car"}
+         />
+      <label htmlFor="needCar" className=" cursor-pointer">
+        I need a car
+      </label>    
+      </div>
+      {formik.touched.car && formik.errors.car && (
+              <span className='text-red-400'>{formik.errors.car}</span>
+            )}
+    </section>
+{/* ends of the subjected changes  */}
           <div className='mb-3'>
             <label >First Name</label>
-            <input type="text" name="firstname" id="firstname" 
+            <input 
+            type="text" 
+            name="firstname"
+             id="firstname" 
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.firstname && formik.errors.firstname ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.firstname} />
             {formik.touched.firstname && formik.errors.firstname && (
@@ -110,7 +151,10 @@ const showmodal=()=>{
 
           <div className='mb-3'>
             <label >Email</label>
-            <input type="email" name="email" id="email"
+            <input 
+            type="email"
+             name="email"
+              id="email"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.email && formik.errors.email ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
             {formik.touched.email && formik.errors.email && (
@@ -120,7 +164,10 @@ const showmodal=()=>{
 
           <div className='mb-3'>
             <label >Password</label>
-            <input type="password" name="password" id="password"
+            <input 
+            type="password"
+            name="password"
+            id="password"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.password && formik.errors.password ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} />
             {formik.touched.password && formik.errors.password && (
@@ -129,7 +176,10 @@ const showmodal=()=>{
           </div>
           <div className='mb-3'>
             <label >phone number</label>
-            <input type="tel" name="phonenumber" id="phonenumber"
+            <input 
+            type="tel" 
+            name="phonenumber" 
+            id="phonenumber"
               className={`block form-input w-full rounded border py-1  ${formik.touched.phonenumber && formik.errors.phonenumber ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phonenumber} />
             {formik.touched.phonenumber && formik.errors.phonenumber && (
