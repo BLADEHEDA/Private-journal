@@ -69,10 +69,9 @@ const showmodal=()=>{
   city: ${formik.values.city}.
   invitecode: ${formik.values.invitecode}
    `);  
-  // formik.resetForm();
+  formik.resetForm();
 }
-  
-    
+
     return (
       <main className="main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
       md:flex ">
@@ -93,12 +92,10 @@ const showmodal=()=>{
         className=" mx-auto w-full bg-white rounded  mt-3 p-3">
 {/* Validate radio buttons   */}
 <section className="radio-btns mb-5">
-
-
 <div className='flex  mt-3  ' >
         <input 
         type="radio"
-         className='w-[70px] bg-[black] bg-black  cursor-pointer '  
+         className='w-[50px] mr-2 bg-[black] bg-black  cursor-pointer '  
          id="haveCar" 
          name='car'
          value="Has Car" 
@@ -111,7 +108,7 @@ const showmodal=()=>{
    
         <input 
         type="radio" 
-        className='w-[70px] bg-[black]  cursor-pointer' 
+        className=' w-[50px] mr-2 bg-[black]  cursor-pointer' 
         id="needCar"
         name='car' 
         value="Needs Car"
@@ -126,7 +123,7 @@ const showmodal=()=>{
               <span className='text-red-400'>{formik.errors.car}</span>
             )}
     </section>
-{/* ends of the subjected changes  */}
+
           <div className='mb-3'>
             <label >First Name</label>
             <input 
