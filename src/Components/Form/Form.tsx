@@ -2,8 +2,9 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import Modal from './Modal';
+import carPic from "../../assets/10109.jpg"
 
-function App(props) {
+function App() {
 // the forllowing code is to hide and show the modal component 
 // const [showModal, setShowModal] = React.useState(false);
 const [showModal , setShowModal]= useState(false)
@@ -53,7 +54,7 @@ const [showModal , setShowModal]= useState(false)
         .optional()
 
       }),
-      onSubmit: function (values) { 
+      onSubmit: function () { 
         setShowModal(true)        
       }
     })
@@ -75,11 +76,22 @@ const showmodal=()=>{
     return (
       <main className="main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
       md:flex ">
-        <section className="main-section-left px-2">
-          <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
-          <p>make the most of your time on the road oon the platform with the largest 
-            netwok of active riders</p>
+        <section className="main-section-left ">
+            <article className='block md:hidden'>
+              <img src={carPic} alt="carPic " />
+            </article>
+            <article className="content px-2 ">
+              <div> 
+              <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
+              <p>make the most of your time on the road oon the platform with the largest 
+                netwok of active riders</p>
+            </div>
+            {/* <article className='hidden md:block mt-[28em]'>
+              <img src={carPic} alt="carPic " />
+            </article> */}
+            </article>
         </section>
+
 
     <section className="main-section-right mt-[0.5em] ]  ">
     <div className="form-top flex px-2 ">

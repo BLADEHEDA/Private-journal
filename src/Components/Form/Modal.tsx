@@ -1,6 +1,6 @@
 // import React from "react";
 
-export default function Modal(props) {
+export default function Modal(props: any) {
 // subjected to cxhanges 
  const confirmbtn =()=>{
   props.showmodal()

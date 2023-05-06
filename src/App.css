@@ -8,6 +8,10 @@
   margin: 0;
   overflow-x: hidden;     
 }
+img{
+  width: 100%;
+  height: auto;
+}
 @media only screen and (min-width:1px){
   .form-input{
     background: rgb(228, 226, 226);
@@ -18,7 +22,9 @@
       border:solid 1px black ;
       background: rgb(241, 239, 239);
       box-shadow: 20em;
-  
-  
     }
+    /* .main-section-left{
+      display: flex;
+      flex-direction: column-reverse;
+    } */
 }
