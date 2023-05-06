@@ -17,6 +17,7 @@
    .main-section{
       border:solid 1px black ;
       background: rgb(241, 239, 239);
+      box-shadow: 20em;
   
   
     }

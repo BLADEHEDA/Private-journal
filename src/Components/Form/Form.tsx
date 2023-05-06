@@ -69,7 +69,7 @@ const showmodal=()=>{
   city: ${formik.values.city}.
   invitecode: ${formik.values.invitecode}
    `);  
-  formik.resetForm();
+  // formik.resetForm();
 }
 
     return (
