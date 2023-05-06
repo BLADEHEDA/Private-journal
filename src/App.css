@@ -13,10 +13,10 @@
 label{
   color:black;  
 }
-input:active{
+/* input:active{
   color:black; 
   color: red;
-}
+} */
 
 img{
   width: 100%;
