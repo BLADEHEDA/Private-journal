@@ -13,10 +13,6 @@
 label{
   color:black;  
 }
-/* input:active{
-  color:black; 
-  color: red;
-} */
 
 img{
   width: 100%;
@@ -25,16 +21,12 @@ img{
 @media only screen and (min-width:1px){
   .form-input{
     background: rgb(228, 226, 226);
+    color:black; */
   }
   }
   @media only screen and (min-width:768px){
    .main-section{
       border:solid 1px black ;
       background: rgb(241, 239, 239);
-      box-shadow: 20em;
     }
-    /* .main-section-left{
-      display: flex;
-      flex-direction: column-reverse;
-    } */
 }
