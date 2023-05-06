@@ -6,7 +6,6 @@ import carPic from "../../assets/10109.jpg"
 
 function App() {
 // the forllowing code is to hide and show the modal component 
-// const [showModal, setShowModal] = React.useState(false);
 const [showModal , setShowModal]= useState(false)
 
     //TODO create formik instance
