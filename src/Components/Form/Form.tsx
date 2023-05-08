@@ -25,22 +25,22 @@ const [showModal , setShowModal]= useState(false)
         firstname: Yup.string()
         .min(2, "Too Short!")
         .max(50, "Too Long!")
-        .required("Firstname is required"),
+        .required(),
     
       lastname: Yup.string()
         .min(2, "Too Short!")
         .max(50, "Too Long!")
-        .required("Lastname is required"),              
+        .required(),              
         email: Yup.string()
                 .email()
                 .required(),
 
          password: Yup.string()
-         .required("Password is required")
+         .required()
           .min(6, "Password is too short - should be 6 chars minimum"),
 
         phonenumber: Yup.string()
-        .required("Phone number is required")
+        .required()
         .label('phone number'),
         city:Yup.string()    
         .label('city')
@@ -51,7 +51,6 @@ const [showModal , setShowModal]= useState(false)
         invitecode:Yup.string()    
         .label('invite code')
         .optional()
-
       }),
       onSubmit: function () { 
         setShowModal(true)        
