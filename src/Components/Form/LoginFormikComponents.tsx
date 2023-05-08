@@ -50,6 +50,7 @@ const LoginFormikComponents = () => {
     password: "",
     phonenumber: "",
     city: "",
+    code: "",
     rememberMe: false,
   };
   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
@@ -67,6 +68,7 @@ const LoginFormikComponents = () => {
     password: yup.string().required("Password field is required"),
     phonenumber: yup.string().required(),
     city: yup.string().required(),
+    code: yup.string().optional(),
   });
 
   return (
@@ -85,6 +87,7 @@ const LoginFormikComponents = () => {
               <FormikField label="Password" name="password" type="password" />
               <FormikField label="Phone number" name="phone" type="tel" />
               <FormikField label="city you'll drive in  " name="city" type="text" />
+              <FormikField label="invite code(optional) " name="code" type="text" />
               {/* <FormikField
                 label="Remember Me"
                 name="rememberMe"

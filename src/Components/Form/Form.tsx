@@ -192,9 +192,9 @@ const showmodal=()=>{
             {formik.touched.phonenumber && formik.errors.phonenumber && (
               <span className='text-red-400'>{formik.errors.phonenumber}</span>
             )}
-          </div>
+          </div>  
           <div className='mb-3'>
-            <label >city you'll drive in </label>
+            <label >invite code(optional) </label>
             <input type="text" name="city" id="city"
               className={`block form-input w-full rounded border py-1 px-2 ${formik.touched.city && formik.errors.city ? 'border-red-400' : 'border-gray-300'}`}
               onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.city} />
