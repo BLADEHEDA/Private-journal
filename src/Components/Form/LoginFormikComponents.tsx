@@ -25,6 +25,7 @@ const FormikField = ({ name, type, label }) => {
                 {label}
               </label>
               <input
+              className="block form-input w-full rounded border py-1 px-2 "
                 type={type}
                 id={name}
                 {...formikField.field}
