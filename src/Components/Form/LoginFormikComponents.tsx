@@ -1,6 +1,10 @@
-import React from "react";
-import { Formik, Form,ErrorMessage,Field } from "formik";
+// import React from "react";
+import { useState } from 'react';
+import { Formik, Form,ErrorMessage,Field, useFormik } from "formik";
 import * as yup from "yup";
+import Modal from './Modal';
+
+
 /**
  * FormikErrorMessage Component
  */
@@ -44,6 +48,16 @@ const FormikField = ({ name, type, label }) => {
  * LoginFormikComponents Component
  */
 const LoginFormikComponents = () => {
+    // subjected to changes 
+    // subjected to cxhanges 
+ const confirmbtn =()=>{
+    props.showmodal()
+    props.setShowModal(false)
+  
+   }
+    // the forllowing code is to hide and show the modal component 
+const [showModal , setShowModal]= useState(false)
+// end of subjected to changes 
   const initialValues = {
     firstname:"",
     lastname:"",
@@ -54,7 +68,12 @@ const LoginFormikComponents = () => {
     code: "",
     rememberMe: false,
   };
-  const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
+//   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
+  const onSubmit=()=>{
+    alert("yo bro")
+    setShowModal(true) 
+    showmodal()
+  }
   const validationSchema = yup.object({
     firstname:
      yup.string()
@@ -72,10 +91,30 @@ const LoginFormikComponents = () => {
     code: yup.string().optional(),
   });
 
+
+  
+// /display the modal values on
+const showmodal=()=>{
+    // alert(`Hello bro whats up 
+    // car: ${formik.values.car}. 
+    // firstnaame: ${formik.values.firstname}. 
+    // lastnaame: ${formik.values.lastname}.
+    // Email: ${formik.values.email}.
+    // password: ${formik.values.password}.
+    // phonenumber: ${formik.values.phonenumber}.
+    // city: ${formik.values.city}.
+    // invitecode: ${formik.values.invitecode}
+    //  `);  
+    alert("hello ")
+    // formik.resetForm();
+  }
   return (
+    <main>  
     <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}
+      onSubmit={
+        onSubmit
+    }
       validationSchema={validationSchema}
     >
       {(formik) => {
@@ -89,18 +128,22 @@ const LoginFormikComponents = () => {
               <FormikField label="Phone number" name="phone" type="tel" />
               <FormikField label="city you'll drive in  " name="city" type="text" />
               <FormikField label="invite code(optional) " name="code" type="text" />
+              
               {/* <FormikField
                 label="Remember Me"
                 name="rememberMe"
                 type="checkbox"
               /> */}
-              <button style={{ display: "block" }}>submit</button>
+              <button  onClick={onSubmit}  style={{ display: "block" }}>submit</button>
             </div>
             {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
           </Form>
         );
       }}
     </Formik>
+    {showModal? (<Modal showModal={showModal} setShowModal={setShowModal}
+          showmodal={showmodal}  />):null }
+    </main>
   );
 };
 export default LoginFormikComponents;
