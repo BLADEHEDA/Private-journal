@@ -1,15 +1,6 @@
 // import React from "react";
-// import { useState } from 'react';
-// import { Formik, Form,ErrorMessage,Field, useFormik } from "formik";;
-import React, { useState } from 'react'
-import {
-  Formik,
-  Form,
-  Field,
-  ErrorMessage,
-//   FieldArray,
-//   FastField
-} from 'formik';
+import { useState } from 'react';
+import { Formik, Form,ErrorMessage,Field } from "formik";;
 import carPic from "../../assets/10109.jpg"
 import * as yup from "yup";
 import Modal from './Modal';
@@ -18,7 +9,7 @@ import Modal from './Modal';
 /**
  * FormikErrorMessage Component
  */
-const FormikErrorMessage = ({ name }) => {
+const FormikErrorMessage = ({ name }:any ) => {
     return (
       <ErrorMessage name={name}>
         {(errMessage) => {
@@ -29,10 +20,10 @@ const FormikErrorMessage = ({ name }) => {
   };
   
 //Reusable input  component field 
-const FormikField = ({ name, type, label }) => {
+const FormikField = ({ name, type, label }:any ) => {
     return (
       <Field name={name}>
-        {(formikField) => {
+        {(formikField:any ) => {
           return (
             <>
               <label htmlFor={name} style={{ display: "block" }}>
@@ -46,7 +37,6 @@ const FormikField = ({ name, type, label }) => {
                 defaultChecked={formikField.field.value}
               />
               <FormikErrorMessage name={name} />
-              {/* <pre>{JSON.stringify(formikField, null, 4)}</pre> */}
             </>
           );
         }}
@@ -56,15 +46,8 @@ const FormikField = ({ name, type, label }) => {
 
 
 const LoginFormikComponents = () => {
-    // subjected to cxhanges 
- const confirmbtn =()=>{
-    props.showmodal()
-    props.setShowModal(false)
-  
-   }
-    // the forllowing code is to hide and show the modal component 
+    //  hide and show the modal component  
 const [showModal , setShowModal]= useState(false)
-// end of subjected to changes 
   const initialValues = {
     firstname:"",
     lastname:"",
@@ -188,7 +171,6 @@ const showmodal=()=>{
               <FormikField label="Phone number" name="phone" type="tel" />
               <FormikField label="city you'll drive in  " name="city" type="text" />
               <FormikField label="invite code(optional) " name="code" type="text" />
-              {/* <button   onClick={onSubmit}  style={{ display: "block" }}>submit</button> */}
               <section className="post-form">
               <p className="form-text">
               By proceeding, you'll agree to Uber's <a href="/"> Term of Use</a>
@@ -209,7 +191,6 @@ const showmodal=()=>{
                Sign In</a>  </p>
               </section>
             </div>
-            {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
           </Form>
         );
       }}
