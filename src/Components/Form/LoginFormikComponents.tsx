@@ -1,5 +1,5 @@
 // import React from "react";
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 import { Formik, Form,ErrorMessage,Field } from "formik";;
 import carPic from "../../assets/10109.jpg"
 import * as yup from "yup";
@@ -59,13 +59,12 @@ const [showModal , setShowModal]= useState(false)
     code: "",
     rememberMe: false,
   };
-
-//   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
-  const onSubmit=()=>{
-      // Reset the form after submission
-    //   resetForm();
+const onSubmit = (values) => {
+    // console.log(values);
     setShowModal(true) 
-  }
+    // Reset the form after submission
+    // resetForm();
+  };
 // subjected to  changes 
 // const onSubmit = (values, submitProps) => {
 //     console.log('Form data', values)
@@ -100,7 +99,7 @@ const [showModal , setShowModal]= useState(false)
   
 // /display the modal values on
 const showmodal=()=>{ 
-    alert("hello ");
+    alert("hello ");;
   }
   return (
     <main>  
