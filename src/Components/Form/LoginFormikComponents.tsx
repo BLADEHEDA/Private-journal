@@ -9,7 +9,8 @@ import {
   ErrorMessage,
 //   FieldArray,
 //   FastField
-} from 'formik'
+} from 'formik';
+import carPic from "../../assets/10109.jpg"
 import * as yup from "yup";
 import Modal from './Modal';
 
@@ -120,6 +121,21 @@ const showmodal=()=>{
   }
   return (
     <main>  
+           <section className="main-section-left ">
+            <article className='block md:hidden'>
+              <img src={carPic} alt="carPic " />
+            </article>
+            <article className="content px-2 mx-4">
+              <div> 
+              <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
+              <p>make the most of your time on the road oon the platform with the largest 
+                netwok of active riders</p>
+            </div>
+            {/* <article className='hidden md:block mt-[28em]'>
+              <img src={carPic} alt="carPic " />
+            </article> */}
+            </article>
+        </section>
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
@@ -131,7 +147,7 @@ const showmodal=()=>{
         return (
           <Form>
     {/* subjected to changes  */}
-    <section className="radio-btns mb-5">
+    <section className="radio-btns mb-5 mx-5">
 <div className='flex  mt-3  ' >
         <input 
         type="radio"
@@ -172,7 +188,26 @@ const showmodal=()=>{
               <FormikField label="Phone number" name="phone" type="tel" />
               <FormikField label="city you'll drive in  " name="city" type="text" />
               <FormikField label="invite code(optional) " name="code" type="text" />
-              <button   onClick={onSubmit}  style={{ display: "block" }}>submit</button>
+              {/* <button   onClick={onSubmit}  style={{ display: "block" }}>submit</button> */}
+              <section className="post-form">
+              <p className="form-text">
+              By proceeding, you'll agree to Uber's <a href="/"> Term of Use</a>
+               and acknowledge 
+              taht i have read the  <a href="/"> Privacy Policy</a>
+            </p>
+            <p className="form-text"> I also agree that Uber or it's representatives 
+            may contact me  by email,photo or SMS(including by automated means
+           ) at the email address or number i provide,
+            including for marketing purposes  </p>
+  
+            <div className='text-center'>
+            <button 
+             onClick={onSubmit} 
+            className='bg-[black] rounded p-3 text-white' type='submit'>Submit</button>
+          </div>
+            <p className="form-text mb-[1em] ">Already have an Account ? <a href="/">
+               Sign In</a>  </p>
+              </section>
             </div>
             {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
           </Form>
