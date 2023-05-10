@@ -24,6 +24,9 @@ img{
     background: rgb(228, 226, 226);
     color:black; 
   }
+  .form-main {
+    background: blue;
+  }
   }
   @media only screen and (min-width:768px){
    .main-section{

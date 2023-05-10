@@ -102,7 +102,7 @@ const showmodal=()=>{
     alert("hello ");;
   }
   return (
-    <main>  
+    <main className='form-main ' >  
            <section className="main-section-left ">
             <article className='block md:hidden'>
               <img src={carPic} alt="carPic " />
