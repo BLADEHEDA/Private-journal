@@ -1,6 +1,15 @@
 // import React from "react";
-import { useState } from 'react';
-import { Formik, Form,ErrorMessage,Field, useFormik } from "formik";
+// import { useState } from 'react';
+// import { Formik, Form,ErrorMessage,Field, useFormik } from "formik";;
+import React, { useState } from 'react'
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+//   FieldArray,
+//   FastField
+} from 'formik'
 import * as yup from "yup";
 import Modal from './Modal';
 
@@ -18,7 +27,7 @@ const FormikErrorMessage = ({ name }) => {
     );
   };
   
-// subjected to changes 
+//Reusable input  component field 
 const FormikField = ({ name, type, label }) => {
     return (
       <Field name={name}>
@@ -44,11 +53,8 @@ const FormikField = ({ name, type, label }) => {
     );
   };
 
-/**
- * LoginFormikComponents Component
- */
+
 const LoginFormikComponents = () => {
-    // subjected to changes 
     // subjected to cxhanges 
  const confirmbtn =()=>{
     props.showmodal()
@@ -65,15 +71,27 @@ const [showModal , setShowModal]= useState(false)
     password: "",
     phonenumber: "",
     city: "",
+    car: "",
     code: "",
     rememberMe: false,
   };
+
 //   const onSubmit = (values) => console.log(JSON.stringify(values, null, 4));
   const onSubmit=()=>{
-    alert("yo bro")
+      // Reset the form after submission
+    //   resetForm();
     setShowModal(true) 
-    showmodal()
   }
+// subjected to  changes 
+// const onSubmit = (values, submitProps) => {
+//     console.log('Form data', values)
+//     console.log('submitProps', submitProps)
+//     submitProps.setSubmitting(false)
+//     submitProps.resetForm()
+//     // setShowModal(true) 
+//   }
+
+
   const validationSchema = yup.object({
     firstname:
      yup.string()
@@ -88,38 +106,64 @@ const [showModal , setShowModal]= useState(false)
     password: yup.string().required("Password field is required"),
     phonenumber: yup.string().required(),
     city: yup.string().required(),
+    car:yup.string()    
+    .label('car')
+    .required(),
     code: yup.string().optional(),
   });
 
 
   
 // /display the modal values on
-const showmodal=()=>{
-    // alert(`Hello bro whats up 
-    // car: ${formik.values.car}. 
-    // firstnaame: ${formik.values.firstname}. 
-    // lastnaame: ${formik.values.lastname}.
-    // Email: ${formik.values.email}.
-    // password: ${formik.values.password}.
-    // phonenumber: ${formik.values.phonenumber}.
-    // city: ${formik.values.city}.
-    // invitecode: ${formik.values.invitecode}
-    //  `);  
-    alert("hello ")
-    // formik.resetForm();
+const showmodal=()=>{ 
+    alert("hello ");
   }
   return (
     <main>  
     <Formik
       initialValues={initialValues}
-      onSubmit={
-        onSubmit
-    }
+      onSubmit={onSubmit}
+    // onReset={handleReset}
       validationSchema={validationSchema}
     >
       {(formik) => {
+        
         return (
           <Form>
+    {/* subjected to changes  */}
+    <section className="radio-btns mb-5">
+<div className='flex  mt-3  ' >
+        <input 
+        type="radio"
+         className='w-[50px] mr-2 bg-[black] bg-black bg-[blue] cursor-pointer '  
+         id="haveCar" 
+         name='car'
+         value="Has Car" 
+         onChange={formik.handleChange}
+         checked={formik.values.car === "Has Car"}
+         />
+      <label htmlFor="haveCar" className=" cursor-pointer">
+        I have a car
+      </label>
+        
+        <input 
+        type="radio" 
+        className=' w-[50px] mr-2 bg-[black] bg-white cursor-pointer' 
+        id="needCar"
+        name='car' 
+        value="Needs Car"
+        onChange={formik.handleChange}
+        checked={formik.values.car === "Needs Car"}
+         />
+      <label htmlFor="needCar" className=" cursor-pointer">
+        I need a car
+      </label>    
+      </div>
+      {formik.touched.car && formik.errors.car && (
+              <span className='text-red-400'>{formik.errors.car}</span>
+            )}
+    </section>
+    {/* end of subjeced changes  */}
             <div style={{ padding: 20 }}>
             <FormikField label="First name" name="firstname" type="text" />
             <FormikField label="Last name" name="lastname" type="text" />
@@ -128,13 +172,7 @@ const showmodal=()=>{
               <FormikField label="Phone number" name="phone" type="tel" />
               <FormikField label="city you'll drive in  " name="city" type="text" />
               <FormikField label="invite code(optional) " name="code" type="text" />
-              
-              {/* <FormikField
-                label="Remember Me"
-                name="rememberMe"
-                type="checkbox"
-              /> */}
-              <button  onClick={onSubmit}  style={{ display: "block" }}>submit</button>
+              <button   onClick={onSubmit}  style={{ display: "block" }}>submit</button>
             </div>
             {/* <pre>{JSON.stringify(formik, null, 4)}</pre> */}
           </Form>

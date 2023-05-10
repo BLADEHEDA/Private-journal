@@ -115,7 +115,7 @@ const showmodal=()=>{
       <label htmlFor="haveCar" className=" cursor-pointer">
         I have a car
       </label>
-   
+        
         <input 
         type="radio" 
         className=' w-[50px] mr-2 bg-[black] bg-white cursor-pointer' 
