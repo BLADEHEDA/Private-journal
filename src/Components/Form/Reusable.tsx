@@ -91,7 +91,7 @@ const showmodal=()=>{
   formik.resetForm();
 }
   return (
-    <main className=' main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
+    <main className=' main-section md:shadow-lg my-[2em]  mx-auto my-0 md:w-[70%] 
     md:flex ' >
              <section className="main-section-left ">
             <article className='block md:hidden'>
