@@ -12,7 +12,7 @@ const InputFields = (props:any) => {
             <input 
             type={props.type}
             name={props.name}
-            className={`block form-input w-full text-[black] rounded border py-1 px-2 ${props.touched && props.errors ? 'border-red-400' : 'border-gray-300'}`}
+            className={`block form-input w-full  rounded border py-1 px-2 ${props.touched && props.errors ? 'border-red-400' : 'border-gray-300'}`}
               onChange={props.handleChange} onBlur={props.handleBlur} value={props.values} />
             {props.touched && props.errors && (
               <span className='text-red-400'>{props.errors}</span>
