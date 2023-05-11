@@ -107,9 +107,6 @@ const showmodal=()=>{
               <p>make the most of your time on the road oon the platform with the largest 
                 netwok of active riders</p>
             </div>
-            {/* <article className='hidden md:block mt-[28em]'>
-              <img src={carPic} alt="carPic " />
-            </article> */}
             </article>
         </section>
         <section className="main-section-right mt-[0.5em] ]  ">
