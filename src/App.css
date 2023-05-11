@@ -25,16 +25,8 @@ img{
   .form-main {
     background: white;
   }
-  /* .cursor{
-    border: solid 1px black;
-    margin-top: -3px;
-  } */
-  /* .radio{
-    border: solid 1px black;
- 
-  } */
   .radiobtn{
-    margin-top: -1.75px;
+    margin-top: 1.75px;
     vertical-align: middle
   }
   }
