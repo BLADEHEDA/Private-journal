@@ -28,12 +28,9 @@ const InputFields = (props) => {
 
 const Reusable = () => {
   const [showModal , setShowModal]= useState(false)
-  // const show =()=>{
-  //   setShowModal(true)
-  // }
-
-
-
+  const toggleModal = ()=>{
+    setShowModal(true)
+  }
   //TODO create formik instance
   const formik = useFormik({
      initialValues: {
@@ -64,9 +61,8 @@ const Reusable = () => {
         password: Yup.string()
         .required()
          .min(6, "Password is too short - should be 6 chars minimum"),
-
-       phonenumber: Yup.string()
-       .required()
+      phonenumber: Yup.string().
+      required('Phone number is required').matches(/^[0-9]+$/, 'Must be only digits').min(7, 'Too short').max(15, 'Too long')
        .label('phone number'),
        city:Yup.string()    
        .label('city')
@@ -86,7 +82,7 @@ const Reusable = () => {
    })
      // /display the modal values on   
 const showmodal=()=>{
-  alert(`Hello bro whats up 
+  alert(`The form values are 
    car: ${formik.values.car}. 
   firstnaame: ${formik.values.firstname}. 
   lastnaame: ${formik.values.lastname}.
@@ -98,12 +94,6 @@ const showmodal=()=>{
    `);  
   formik.resetForm();
 }
-const toggleModal = ()=>{
-  setShowModal(true)
-}
-
-console.log(showModal);
-
   return (
     <main className=' main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
     md:flex ' >
@@ -216,11 +206,21 @@ touched={formik.touched.invitecode}
 errors={formik.errors.invitecode}
 values={formik.values.invitecode}
 />
+<p className="form-text">
+              By proceeding, you'll agree to Uber's <a href="/"> Term of Use</a>
+               and acknowledge 
+              taht i have read the  <a href="/"> Privacy Policy</a>
+            </p>
+            <p className="form-text"> I also agree that Uber or it's representatives 
+            may contact me  by email,photo or SMS(including by automated means
+           ) at the email address or number i provide,
+            including for marketing purposes  </p>
 <div className='text-center mt-3'>
-            <button 
-           
-            className='bg-[black] rounded p-3 text-white'  >Submit</button>
+            <button         
+         className='bg-[black] rounded p-3 text-white'  >Submit</button>
           </div>
+          <p className="form-text mb-[1em] ">Already have an Account ? <a href="/">
+               Sign In</a>  </p>
           </form>
           </section>
 {/* <InputFields label="" name="" type="" /> */}
