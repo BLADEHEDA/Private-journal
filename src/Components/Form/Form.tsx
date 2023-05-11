@@ -89,6 +89,7 @@ const showmodal=()=>{
             </article> */}
             </article>
         </section>
+        {/* above not necessary for now  */}
 
 
     <section className="main-section-right mt-[0.5em] ]  ">

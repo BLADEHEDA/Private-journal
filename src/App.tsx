@@ -1,17 +1,19 @@
 
 import './App.css'
+// import LoginForm from './Components/Form/LoginForm'
 // import Form from './Components/Form/Form'
-import LoginFormikComponents from './Components/Form/LoginFormikComponents'
-// import MyInput from './Components/Form/FormikWrapper'
-
+import Reusable from './Components/Form/Reusable'
+// import LoginFormikComponents from './Components/Form/LoginFormikComponents'
 function App() {
   return (
     <div>
     
-  
-  {/* <Form/> */}
+{/*   
+ <Form/>  */}
 
- <LoginFormikComponents/>
+ {/* <LoginFormikComponents/> 
+ <LoginForm/> */}
+ <Reusable/>
 
  </div>
   )
