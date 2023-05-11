@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import Modal from './Modal';
 // import InputFields from './InputFields';
-// import carPic from "../../assets/10109.jpg"
+import carPic from "../../assets/10109.jpg"
 
 const InputFields = (props) => {
   return (
@@ -105,28 +105,52 @@ const toggleModal = ()=>{
 console.log(showModal);
 
   return (
-    <main className='mb-10 px-[1em] ' >
+    <main className=' main-section shadow-lg my-[2em] w-[90%] mx-auto my-0 md:w-[70%] 
+    md:flex ' >
+             <section className="main-section-left ">
+            <article className='block md:hidden'>
+              <img src={carPic} alt="carPic " />
+            </article>
+            <article className="content px-2 ">
+              <div> 
+              <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
+              <p>make the most of your time on the road oon the platform with the largest 
+                netwok of active riders</p>
+            </div>
+            {/* <article className='hidden md:block mt-[28em]'>
+              <img src={carPic} alt="carPic " />
+            </article> */}
+            </article>
+        </section>
+        <section className="main-section-right mt-[0.5em] ]  ">
+    <div className="form-top flex ">
+            <h3 className="form-top-head font-[500]  text-[20px]  ">Become a driver</h3>
+            <h3 className="form-top-head mt-[5px] ml-[12px] ">Sign up to ride</h3>
+     </div>
+
+
       <form   onSubmit={formik.handleSubmit}  >
 
         {/* Validate radio buttons   */}
-<section className="radio-btns mb-5">
+<section className="radio-btns mb-5  ">
 <div className='flex  mt-3  ' >
+  <span className="radio">
         <input 
         type="radio"
-         className='w-[50px] mr-2 bg-[black] bg-black bg-[blue] cursor-pointer '  
+         className=' radiobtn w-[1em] h-[1em]   mr-2 bg-[black] bg-black bg-[blue] cursor-pointer '  
          id="haveCar" 
          name='car'
          value="Has Car" 
          onChange={formik.handleChange}
          checked={formik.values.car === "Has Car"}
          />
-      <label htmlFor="haveCar" className=" cursor-pointer">
+      <label htmlFor="haveCar" className=" cursor">
         I have a car
       </label>
-        
+      </span>  <span className="radio">   
         <input 
         type="radio" 
-        className=' w-[50px] mr-2 bg-[black] bg-white cursor-pointer' 
+        className=' radiobtn w-[1em] h-[1em]  mr-2 bg-[black] bg-white cursor-pointer' 
         id="needCar"
         name='car' 
         value="Needs Car"
@@ -136,6 +160,7 @@ console.log(showModal);
       <label htmlFor="needCar" className=" cursor-pointer">
         I need a car
       </label>    
+      </span>
       </div>
       {formik.touched.car && formik.errors.car && (
               <span className='text-red-400'>{formik.errors.car}</span>
@@ -191,12 +216,13 @@ touched={formik.touched.invitecode}
 errors={formik.errors.invitecode}
 values={formik.values.invitecode}
 />
-<div className='text-center'>
+<div className='text-center mt-3'>
             <button 
            
             className='bg-[black] rounded p-3 text-white'  >Submit</button>
           </div>
           </form>
+          </section>
 {/* <InputFields label="" name="" type="" /> */}
 {showModal? (<Modal showModal={showModal} setShowModal={setShowModal}
           showmodal={showmodal}  />):null }
