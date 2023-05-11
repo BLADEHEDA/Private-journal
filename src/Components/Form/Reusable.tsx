@@ -99,7 +99,7 @@ const showmodal=()=>{
             </article>
             <article className="content px-2 ">
               <div> 
-              <h1 className='text-[30px] my-[1em] ' >Opportunity is now EveryWhere</h1>
+              <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
               <p>make the most of your time on the road oon the platform with the largest 
                 netwok of active riders</p>
             </div>
@@ -120,7 +120,7 @@ const showmodal=()=>{
   <span className="radio">
         <input 
         type="radio"
-         className=' radiobtn w-[1em] h-[1em]   mr-2  bg-[blue] cursor-pointer '  
+         className=' radiobtn w-[1.2em] h-[1.2em]   mr-2  cursor-pointer '  
          id="haveCar" 
          name='car'
          value="Has Car" 
@@ -133,7 +133,7 @@ const showmodal=()=>{
       </span>  <span className="radio">   
         <input 
         type="radio" 
-        className=' radiobtn w-[1em] h-[1em]  mr-2  bg-white cursor-pointer' 
+        className=' radiobtn w-[1.2em] h-[1.2em]  mr-2  cursor-pointer' 
         id="needCar"
         name='car' 
         value="Needs Car"
