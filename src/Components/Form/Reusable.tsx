@@ -127,7 +127,7 @@ const showmodal=()=>{
   <span className="radio">
         <input 
         type="radio"
-         className=' radiobtn w-[1em] h-[1em]   mr-2 bg-[black] bg-black bg-[blue] cursor-pointer '  
+         className=' radiobtn w-[1em] h-[1em]   mr-2  bg-[blue] cursor-pointer '  
          id="haveCar" 
          name='car'
          value="Has Car" 
@@ -140,7 +140,7 @@ const showmodal=()=>{
       </span>  <span className="radio">   
         <input 
         type="radio" 
-        className=' radiobtn w-[1em] h-[1em]  mr-2 bg-[black] bg-white cursor-pointer' 
+        className=' radiobtn w-[1em] h-[1em]  mr-2  bg-white cursor-pointer' 
         id="needCar"
         name='car' 
         value="Needs Car"
