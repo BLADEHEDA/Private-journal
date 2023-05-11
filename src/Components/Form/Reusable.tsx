@@ -103,7 +103,7 @@ const showmodal=()=>{
             </article>
             <article className="content px-2 ">
               <div> 
-              <h1 className='text-[30px] my-[1em] ' >Opportunity is EveryWhere</h1>
+              <h1 className='text-[30px] my-[1em] ' >Opportunity is now EveryWhere</h1>
               <p>make the most of your time on the road oon the platform with the largest 
                 netwok of active riders</p>
             </div>
