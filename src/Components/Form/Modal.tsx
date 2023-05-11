@@ -7,17 +7,17 @@ export default function Modal(props: any) {
   props.setShowModal(false)
 
  }
-//  tempalte for the input field 
- function InputField({ field, form, ...props }) {
-  return (
-    <div>
-      <input {...field} {...props} />
-      {form.touched[field.name] && form.errors[field.name] && (
-        <div>{form.errors[field.name]}</div>
-      )}
-    </div>
-  );
-}
+// //  tempalte for the input field 
+//  function InputField({ field, form, ...props }) {
+//   return (
+//     <div>
+//       <input {...field} {...props} />
+//       {form.touched[field.name] && form.errors[field.name] && (
+//         <div>{form.errors[field.name]}</div>
+//       )}
+//     </div>
+//   );
+// }
   return (
     <>
 
